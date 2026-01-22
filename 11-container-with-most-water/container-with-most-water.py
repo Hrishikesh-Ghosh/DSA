@@ -1,17 +1,20 @@
 class Solution(object):
     def maxArea(self, height):
-        left = 0
-        right = len(height) - 1
-        max_area_ever = 0
-
-        while left < right:
-            width = right - left
-            area_right_now = min(height[left], height[right])*width
-            max_area_ever = max(max_area_ever, area_right_now)
-
-            if height[left] < height[right]:
-                left+=1
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        i = 0
+        j = len(height)-1
+        max_area = 0
+        while i < j:
+            shortest_line_height = min(height[i], height[j])
+            width = j-i
+            area = width*shortest_line_height
+            max_area = max(max_area, area)
+            if height[i] < height[j]:
+                i+=1
             else:
-                right-=1
-
-        return max_area_ever
+                j-=1
+        return max_area
+   
