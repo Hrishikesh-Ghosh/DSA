@@ -5,17 +5,26 @@ class Solution(object):
         :rtype: bool
         """
         stack = []
-        mapping = {
-            ")":"(",
-            "}":"{",
-            "]":"[",
-        }
-        for ch in s:
-            if ch in mapping.values():
-                stack.append(ch)
-            else:
-                if stack and stack.pop() == mapping[ch]:
+        for i in s:
+            if i in "({[":
+                stack.append(i)
+            elif i == ")":
+                if stack and stack.pop() == "(":
                     continue
                 else:
                     return False
-        return not stack
+            elif i == "}":
+                if stack and stack.pop() == "{":
+                    continue
+                else:
+                    return False
+            elif i == "]":
+                if stack and stack.pop() == "[":
+                    continue
+                else:
+                    return False
+        if not stack:
+            return True
+        else:
+            return False
+            
