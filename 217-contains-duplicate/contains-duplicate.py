@@ -1,8 +1,10 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        HashMap = {}
+        Hashmap = {}
         for i in nums:
-            HashMap[i] = HashMap.get(i,0) + 1
-            if HashMap[i] > 1:
+            Hashmap[i] = Hashmap.get(i,0)+1
+            if Hashmap[i] == 1:
+                continue
+            else:
                 return True
         return False
