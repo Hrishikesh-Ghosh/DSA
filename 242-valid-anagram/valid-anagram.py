@@ -1,20 +1,14 @@
-class Solution(object):
-    def isAnagram(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        mp = {}
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        Map = {}
         for i in s:
-            mp[i] = mp.get(i,0) + 1
-        print (mp)
+            Map[i] = Map.get(i,0) + 1
         for i in t:
-            mp[i] = mp.get(i,0) - 1
-        print (mp)
-        for i in mp:
-            if mp[i] == 0:
+            Map[i] = Map.get(i,0) - 1
+        for i in Map:
+            if Map[i] == 0:
                 continue
             else:
                 return False
         return True
+        
